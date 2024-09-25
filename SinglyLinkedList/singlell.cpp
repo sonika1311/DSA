@@ -22,7 +22,7 @@ int main(){
             case 2: display();
             break;
         }
-    }while(choice == 7);
+    }while(choice != 7);
     return 0;
 }
 
@@ -42,4 +42,13 @@ void create(){
         temp = temp->next;
     }
     //cout<<temp->data;
+}
+void display(){
+    struct Node* p;
+    p = head;
+    while(p->next!=NULL){
+        cout<<p->data<<endl;
+        p = p->next;
+    }
+    cout<<p->data<<endl;
 }
