@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-void create();
+void createNode();
 void display();
 struct Node *temp, *head = NULL;
 struct Node{
@@ -13,11 +13,11 @@ int main(){
     
     do{
         cout<<"Singly Linked List"<<endl;
-        cout<<"Enter 1 to create linked list"<<endl;
+        cout<<"Enter 1 to create new node in linked list"<<endl;
         cout<<"Enter 2 to display linked list"<<endl;
         cin>> choice;
         switch(choice){
-            case 1: create();
+            case 1: createNode();
             break;
             case 2: display();
             break;
@@ -26,7 +26,7 @@ int main(){
     return 0;
 }
 
-void create(){
+void createNode(){
     struct Node* newnode = (struct Node*)malloc(sizeof(struct Node));
     //cout<<&newnode<<endl;
     //cout<<typeid(&newnode).name()<<endl;
