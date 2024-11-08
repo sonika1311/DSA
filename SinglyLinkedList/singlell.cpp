@@ -73,7 +73,22 @@ void insert(){
         display();
     }
     else{
-        cout<<"to be implented";
+        //insert in between and end
+        struct Node * temp=head;
+        int cnt = pos-2;
+        while(cnt>0){
+            temp = temp->next;
+            cnt--;   
+        }
+        struct Node* newnode = (struct Node*)malloc(sizeof(struct Node));
+        
+        newnode->data = value;
+        if(temp->next!=NULL){
+        //handles insert in between
+        newnode->next = temp->next;
+        }
+        temp->next=newnode;
     }
+    display();
 
 }
