@@ -4,7 +4,8 @@ using namespace std;
 void createNode();
 void display();
 void insert();
-struct Node *temp, *head = NULL;
+void deleteEle();
+struct Node *tail, *head = NULL;
 struct Node{
     int data;
     struct Node* next;
@@ -17,6 +18,7 @@ int main(){
         cout<<"Enter 1 to create new node in linked list"<<endl;
         cout<<"Enter 2 to display linked list"<<endl;
         cout<<"Enter 3 to insert into linked list"<<endl;
+        cout<<"Enter 4 to delete a node from linked list"<<endl;
         cin>> choice;
         switch(choice){
             case 1: createNode();
@@ -24,6 +26,8 @@ int main(){
             case 2: display();
             break;
             case 3: insert();
+            break;
+            case 4: deleteEle();
             break;
         }
     }while(choice != 7);
@@ -39,11 +43,11 @@ void createNode(){
     newnode->next=NULL;
     if(head==NULL){
         head = newnode;
-        temp = newnode;
+        tail = newnode;
     }
     else{
-        temp->next = newnode;
-        temp = temp->next;
+        tail->next = newnode;
+        tail = tail->next;
     }
     //cout<<temp->data;
     display();
@@ -88,7 +92,28 @@ void insert(){
         newnode->next = temp->next;
         }
         temp->next=newnode;
+        if(newnode->next==NULL) tail = newnode;
     }
     display();
 
+}
+
+void deleteEle(){
+    int pos;
+    cout<<"Enter position of element to delete"<<endl;
+    cin>>pos;
+    if(pos==1){
+        head = head->next;
+    }
+    else{
+        struct Node* elePos, *temp=head;
+        int cnt = pos-2;
+        while(cnt>0){
+            temp = temp->next;
+            cnt--;
+        }
+        elePos = temp->next;
+        temp->next = elePos->next;
+    }
+    display();
 }
