@@ -5,6 +5,7 @@ void createNode();
 void display();
 void insert();
 void deleteEle();
+void reverse();
 struct Node *tail, *head = NULL;
 struct Node{
     int data;
@@ -19,6 +20,7 @@ int main(){
         cout<<"Enter 2 to display linked list"<<endl;
         cout<<"Enter 3 to insert into linked list"<<endl;
         cout<<"Enter 4 to delete a node from linked list"<<endl;
+        cout<<"Enter 5 to reverse linked list"<<endl;
         cin>> choice;
         switch(choice){
             case 1: createNode();
@@ -28,6 +30,8 @@ int main(){
             case 3: insert();
             break;
             case 4: deleteEle();
+            break;
+            case 5: reverse();
             break;
         }
     }while(choice != 7);
@@ -115,5 +119,21 @@ void deleteEle(){
         elePos = temp->next;
         temp->next = elePos->next;
     }
+    display();
+}
+void reverse(){
+    struct Node *first,*second,*temp;
+    first = head;
+    second = first->next;
+
+    while(second !=NULL){
+        temp = second->next;
+        second->next = first;
+        first = second;
+        second = temp;
+    }
+    head->next=NULL;
+    tail=head;
+    head=first;
     display();
 }
