@@ -141,6 +141,7 @@ void deleteEle(){
         }
         elePos = temp->next;
         temp->next = elePos->next;
+        if(temp->next == NULL) {tail = temp;}
     }
     size--;
     display();
