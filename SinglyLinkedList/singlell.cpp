@@ -61,6 +61,10 @@ void createNode(){
     display();
 }
 void display(){
+    if(size==0){
+        cout<<"LinkedList is empty"<<endl;
+        return;
+    }
     struct Node* p;
     p = head;
     int cnt=0;
@@ -120,7 +124,11 @@ void deleteEle(){
         if(pos<1 || pos>size)
             cout<< "Please enter position value between 1 and "<<size<<endl;
     }while((pos<1 || pos>size));
-
+    if(size ==1 ){
+        head=NULL;
+        size--;
+        return;
+    }
     if(pos==1){
         head = head->next;
     }
