@@ -7,6 +7,7 @@ void insert();
 void deleteEle();
 void reverse();
 struct Node *tail, *head = NULL;
+int size=0;
 struct Node{
     int data;
     struct Node* next;
@@ -21,6 +22,7 @@ int main(){
         cout<<"Enter 3 to insert into linked list"<<endl;
         cout<<"Enter 4 to delete a node from linked list"<<endl;
         cout<<"Enter 5 to reverse linked list"<<endl;
+        cout<<"Enter 7 to reverse linked list"<<endl;
         cin>> choice;
         switch(choice){
             case 1: createNode();
@@ -33,6 +35,7 @@ int main(){
             break;
             case 5: reverse();
             break;
+            default: cout<<"Invalid choice"<<endl;
         }
     }while(choice != 7);
     return 0;
@@ -54,6 +57,7 @@ void createNode(){
         tail = tail->next;
     }
     //cout<<temp->data;
+    size++;
     display();
 }
 void display(){
@@ -69,8 +73,13 @@ void display(){
 }
 void insert(){
     int pos,value;
-    cout<<"Enter the position to insert"<<endl;
-    cin>>pos;
+    do{
+        cout<<"Enter the position to insert"<<endl;
+        cin>>pos;
+        if(pos<1 || pos>size+1)
+            cout<< "Please enter position value between 1 and "<<size+1<<endl;
+    }while((pos<1 || pos>size+1));
+
     cout<<"Enter the data to insert"<<endl;
     cin>>value;
     if(pos==1){
@@ -98,14 +107,20 @@ void insert(){
         temp->next=newnode;
         if(newnode->next==NULL) tail = newnode;
     }
+    size++;
     display();
 
 }
 
 void deleteEle(){
     int pos;
-    cout<<"Enter position of element to delete"<<endl;
-    cin>>pos;
+    do{
+        cout<<"Enter position of element to delete"<<endl;
+        cin>>pos;
+        if(pos<1 || pos>size)
+            cout<< "Please enter position value between 1 and "<<size<<endl;
+    }while((pos<1 || pos>size));
+
     if(pos==1){
         head = head->next;
     }
@@ -119,6 +134,7 @@ void deleteEle(){
         elePos = temp->next;
         temp->next = elePos->next;
     }
+    size--;
     display();
 }
 void reverse(){
