@@ -22,7 +22,7 @@ int main(){
         cout<<"Enter 3 to insert into linked list"<<endl;
         cout<<"Enter 4 to delete a node from linked list"<<endl;
         cout<<"Enter 5 to reverse linked list"<<endl;
-        cout<<"Enter 7 to reverse linked list"<<endl;
+        cout<<"Enter 7 to exit"<<endl;
         cin>> choice;
         switch(choice){
             case 1: createNode();
